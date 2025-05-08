@@ -2,12 +2,94 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="img/pokedex.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Pokedex</title>
+    <!--script-->
+    <script type="module" src="/src/main.js" defer></script>
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+  <body class="font-family">
+    <header class="flex flex-col justify-center items-center p-10">
+      <div id="navbar" class="flex items-center-safe justify-end w-full fixed top-3 bg-gray-500/50 py-3 me-5">
+        <label for="itemPerPage">Pokemon per pages</label>
+        <select id="itemPerPage" class="me-4">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+        </select>
+        <label for="dark-mode-select" class="sr-only">Select:</label>
+        <select id="dark-mode-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="system">System</option>
+        </select>
+
+
+
+        <!--NOT DONE YET-->
+        <button>Previous page</button>
+        <button>Next page</button>
+
+
+
+
+      </div>
+      <img src="https://www.pngplay.com/wp-content/uploads/11/Pokemon-Yellow-Logo-PNG-Pic-Background.png" loading="lazy" alt="pokedex logo" decoding="async" width="220" height=auto/>
+      <div id="filter-container" class="flex justify-around w-full my-10">
+        <!--<div id="type-container" class="flex flex-col justify-center items-center w-1/2">
+          <h1 class="text-2xl text-blue-400 font-bold">Select Type:</h1>
+        </div>-->
+        <div id="gen-container" class="flex flex-col justify-center items-center w-1/2">
+          <h1 class="text-2xl text-blue-400 ">Select Gen:</h1>
+          <div id="gen-tab" class="flex gap-2 justify-center my-5 shadow-xl">
+            <button class="tab-button px-4 py-2 hover:bg-gray-200 active-tab" data-gen="1">I</button>
+            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="2">II</button>
+            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="3">III</button>
+            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="4">IV</button>
+            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="5">V</button>
+            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="6">VI</button>
+            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="7">VII</button>
+            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="8">VIII</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="pokemon-card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 px-4">
+        <div class="card">
+          <div class="card-title">
+            <h1>Pikachu</h1>
+            <h1>#001</h1>
+            <div >
+              <h2 class="card-type">electric</h2>
+              <h2 class="card-type">water</h2>
+            </div>
+          </div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png" alt="yellow rat wit pink cheek" width="60%" height="60%" />
+        </div>
+        <dialog class="myDialog">
+          <button id="dialog-exit"> close </button>
+          <div class="dialog-title">
+            <h1>#001</h1>
+            <h1>Pikachu</h1>
+            <div class="dialog-element">
+              <h2 class="card-type">electric</h2>
+              <h2 class="card-type">water</h2>
+            </div>
+          </div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png" alt="yellow rat wit pink cheek" width="400" height="400" />
+          <div class="dialog-white-plate">
+            <div class="dialog-info-button">
+              <button value="about" class="info-button w-full hover:bg-gray-400">About</button>
+              <button value="baseStat" class="info-button w-full hover:bg-gray-400">Base stats</button>
+            </div>
+            <div class="dialog-info"></div>
+          </div>
+        </dialog>
+      </div>
+    </main>
+    <footer>
+      
+    </footer>
   </body>
 </html>
