@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 @import "tailwindcss";
+@tailwind utilities;
 
 @theme {
     --font-family: "Pixelify Sans", sans-serif;
@@ -7,9 +8,36 @@
     --font-weight: 400;
     --font-style: normal;
 
+    --normal-color: #A8A77A;
+    --fire-color: #EE8130;
+    --water-color: #6390F0;
+    --grass-color: #7AC74C;
+    --electric-color: #F7D02C;
+    --ice-color: #96D9D6;
+    --fighting-color: #C22E28;
+    --poison-color: #A33EA1;
+    --ground-color: #E2BF65;
+    --flying-color: #A98FF3;
+    --psychic-color: #F95587;
+    --bug-color: #A6B91A;
+    --rock-color: #B6A136;
+    --ghost-color: #735797;
+    --dragon-color: #6F35FC;
+    --dark-color: #705746;
+    --steel-color: #B7B7CE;
+    --fairy-color: #ffadbd;
 }
+
+.tab-button {
+    @apply px-4 py-2 hover:bg-gray-200;
+}
+
+.page-button {
+    @apply mx-2;
+}
+
 .card {
-    @apply flex flex-wrap justify-around w-full bg-amber-300 p-5 rounded-4xl shadow-2xl text-white;
+    @apply flex flex-wrap justify-around w-full  p-5 rounded-4xl shadow-2xl text-white hover:cursor-pointer hover:brightness-105;
 }
 .card-title {
     @apply text-3xl font-bold;
@@ -17,16 +45,28 @@
 .card-type {
     @apply flex justify-center items-center p-1 backdrop-grayscale-50 rounded-xl mt-1 me-2 text-lg;
 }
-.card-clicked {
+/*.card-clicked {
     @apply flex flex-wrap justify-around w-full bg-amber-800 p-5 rounded-4xl shadow-2xl text-white;
-}
+}*/
 
 .dialog-title {
     @apply flex flex-col justify-center items-center text-2xl font-bold text-white;
 }
 
+.dialog-content {
+    @apply flex justify-center items-center w-full h-full;
+}
+
 .myDialog {
-    @apply text-2xl font-bold text-white shadow-2xl rounded-2xl bg-amber-300 p-1;
+    @apply text-2xl font-bold text-white shadow-2xl rounded-2xl p-1 w-1/2;
+}
+
+.dialog-exit {
+    @apply absolute m-3;
+}
+
+.dialog-img {
+    @apply flex justify-center items-center;
 }
 
 .dialog-element {
@@ -34,7 +74,7 @@
 }
 
 .dialog-white-plate {
-    @apply rounded-2xl bg-white p-1;
+    @apply rounded-2xl bg-white p-1 w-full h-1/3
 }
 
 .dialog-info-button {
@@ -47,4 +87,82 @@
 
 button {
     @apply hover:cursor-pointer;
+}
+
+@layer utilities {
+    .type-normal {
+        background-color: var(--normal-color);
+    }
+
+    .type-fire {
+        background-color: var(--fire-color);
+    }
+
+    .type-water {
+        background-color: var(--water-color);
+    }
+
+    .type-grass {
+        background-color: var(--grass-color);
+    }
+
+    .type-electric {
+        background-color: var(--electric-color);
+    }
+
+    .type-ice {
+        background-color: var(--ice-color);
+    }
+
+    .type-fighting {
+        background-color: var(--fighting-color);
+    }
+
+    .type-poison {
+        background-color: var(--poison-color);
+    }
+
+    .type-ground {
+        background-color: var(--ground-color);
+    }
+
+    .type-flying {
+        background-color: var(--flying-color);
+    }
+
+    .type-psychic {
+        background-color: var(--psychic-color);
+    }
+
+    .type-bug {
+        background-color: var(--bug-color);
+    }
+
+    .type-rock {
+        background-color: var(--rock-color);
+    }
+
+    .type-ghost {
+        background-color: var(--ghost-color);
+    }
+
+    .type-dragon {
+        background-color: var(--dragon-color);
+    }
+
+    .type-dark {
+        background-color: var(--dark-color);
+    }
+
+    .type-steel {
+        background-color: var(--steel-color);
+    }
+
+    .type-fairy {
+        background-color: var(--fairy-color);
+    }
+
+    .type-stellar {
+        background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+    }
 }

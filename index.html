@@ -23,16 +23,10 @@
           <option value="dark">Dark</option>
           <option value="system">System</option>
         </select>
-
-
-
-        <!--NOT DONE YET-->
-        <button>Previous page</button>
-        <button>Next page</button>
-
-
-
-
+        <div class="p-option-container">
+          <button class="page-button" value="pre">Previous page</button>
+          <button class="page-button" value="next">Next page</button>
+        </div>
       </div>
       <img src="https://www.pngplay.com/wp-content/uploads/11/Pokemon-Yellow-Logo-PNG-Pic-Background.png" loading="lazy" alt="pokedex logo" decoding="async" width="220" height=auto/>
       <div id="filter-container" class="flex justify-around w-full my-10">
@@ -42,21 +36,22 @@
         <div id="gen-container" class="flex flex-col justify-center items-center w-1/2">
           <h1 class="text-2xl text-blue-400 ">Select Gen:</h1>
           <div id="gen-tab" class="flex gap-2 justify-center my-5 shadow-xl">
-            <button class="tab-button px-4 py-2 hover:bg-gray-200 active-tab" data-gen="1">I</button>
-            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="2">II</button>
-            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="3">III</button>
-            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="4">IV</button>
-            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="5">V</button>
-            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="6">VI</button>
-            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="7">VII</button>
-            <button class="tab-button px-4 py-2 hover:bg-gray-200" data-gen="8">VIII</button>
+            <button class="tab-button active-tab" data-gen="1">I</button>
+            <button class="tab-button" data-gen="2">II</button>
+            <button class="tab-button" data-gen="3">III</button>
+            <button class="tab-button" data-gen="4">IV</button>
+            <button class="tab-button" data-gen="5">V</button>
+            <button class="tab-button" data-gen="6">VI</button>
+            <button class="tab-button" data-gen="7">VII</button>
+            <button class="tab-button" data-gen="8">VIII</button>
+            <button class="tab-button" data-gen="9">IX</button>
           </div>
         </div>
       </div>
     </header>
     <main>
       <div id="pokemon-card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 px-4">
-        <div class="card">
+        <div class="card type-psychic">
           <div class="card-title">
             <h1>Pikachu</h1>
             <h1>#001</h1>
@@ -67,8 +62,9 @@
           </div>
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png" alt="yellow rat wit pink cheek" width="60%" height="60%" />
         </div>
-        <dialog class="myDialog">
-          <button id="dialog-exit"> close </button>
+        <div class="dialog-container">
+        <dialog class="myDialog type-stellar">
+          <button class="dialog-exit"> close </button>
           <div class="dialog-title">
             <h1>#001</h1>
             <h1>Pikachu</h1>
@@ -77,17 +73,21 @@
               <h2 class="card-type">water</h2>
             </div>
           </div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png" alt="yellow rat wit pink cheek" width="400" height="400" />
+          <div class="dialog-img">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png" alt="yellow rat wit pink cheek" width="400" height="400" />
+          </div>
           <div class="dialog-white-plate">
             <div class="dialog-info-button">
-              <button value="about" class="info-button w-full hover:bg-gray-400">About</button>
-              <button value="baseStat" class="info-button w-full hover:bg-gray-400">Base stats</button>
+              <button value="about" class="info-button w-full hover:bg-gray-200">About</button>
+              <button value="baseStat" class="info-button w-full hover:bg-gray-200">Base stats</button>
             </div>
             <div class="dialog-info"></div>
           </div>
         </dialog>
+        </div>
       </div>
     </main>
+
     <footer>
       
     </footer>
