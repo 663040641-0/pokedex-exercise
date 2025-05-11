@@ -8,7 +8,7 @@
     <!--script-->
     <script type="module" src="/src/main.js" defer></script>
   </head>
-  <body class="font-family">
+  <body class="font-family bg-white dark:bg-gray-800 text-black dark:text-white ">
     <header class="flex flex-col justify-center items-center p-10">
       <div id="navbar" class="flex items-center-safe justify-end w-full fixed top-3 bg-gray-500/50 py-3 me-5">
         <label for="itemPerPage">Pokemon per pages</label>
@@ -19,11 +19,11 @@
         </select>
         <label for="dark-mode-select" class="sr-only">Select:</label>
         <select id="dark-mode-select">
+          <option value="system">System</option>
           <option value="light">Light</option>
           <option value="dark">Dark</option>
-          <option value="system">System</option>
         </select>
-        <div class="p-option-container">
+        <div class="p-option-container hidden sm:flex">
           <button class="page-button" value="pre">Previous page</button>
           <button class="page-button" value="next">Next page</button>
         </div>
@@ -35,7 +35,7 @@
         </div>-->
         <div id="gen-container" class="flex flex-col justify-center items-center w-1/2">
           <h1 class="text-2xl text-blue-400 ">Select Gen:</h1>
-          <div id="gen-tab" class="flex gap-2 justify-center my-5 shadow-xl">
+          <div id="gen-tab" class="gap-2 justify-center my-5 shadow-xl hidden sm:flex">
             <button class="tab-button active-tab" data-gen="1">I</button>
             <button class="tab-button" data-gen="2">II</button>
             <button class="tab-button" data-gen="3">III</button>
@@ -46,6 +46,19 @@
             <button class="tab-button" data-gen="8">VIII</button>
             <button class="tab-button" data-gen="9">IX</button>
           </div>
+          <label for="gen-select" class="flex sm:hidden"></label>
+          <select id="gen-select" class="flex sm:hidden">
+            <option value="1">I</option>
+            <option value="2">II</option>
+            <option value="3">III</option>
+            <option value="4">IV</option>
+            <option value="5">V</option>
+            <option value="6">VI</option>
+            <option value="7">VII</option>
+            <option value="8">VIII</option>
+            <option value="9">IX</option>
+          </select>
+
         </div>
       </div>
     </header>
@@ -85,6 +98,10 @@
           </div>
         </dialog>
         </div>
+      </div>
+      <div id="pageBut" class="fixed top-11/12 text-2xl flex sm:hidden w-full justify-center items-center-safe">
+        <button class="page-button bg-gray-500/75 p-2 rounded-2xl" value="pre">Previous</button>
+        <button class="page-button bg-gray-500/75 p-2 rounded-2xl" value="next">Next</button>
       </div>
     </main>
 
