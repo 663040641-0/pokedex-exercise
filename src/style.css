@@ -29,7 +29,7 @@
 }
 
 .tab-button {
-    @apply px-4 py-2 hover:bg-gray-200;
+    @apply px-4 py-2 hover:cursor-pointer;
 }
 
 option {
@@ -96,6 +96,26 @@ option {
 button {
     @apply hover:cursor-pointer;
 }
+
+.stat-bar-container {
+    width: 100%;
+    background-color: #e2e8f0; /* Tailwind's bg-gray-300 */
+    border-radius: 9999px;
+    overflow: hidden;
+    height: 1.5rem;
+}
+
+.stat-bar {
+    height: 100%;
+    background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+    color: white;
+    font-size: 0.875rem;
+    padding-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 
 @layer utilities {
     .type-normal {

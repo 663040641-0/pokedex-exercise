@@ -35,35 +35,51 @@ const baseStat =
 const dialogInfo = document.querySelector(".dialog-info");
 
 let limitPage = 10;
+const bodyElement = document.querySelector('body');
 
 //theme mode selection
 const modeSelection = document.querySelector("#dark-mode-select");
 let mode = 'system'
-modeSelection.addEventListener("change", e => {
+modeSelection.addEventListener("change", () => {
     mode = modeSelection.value;
-    const bodyElement = document.querySelector ('body');
+
     if (mode === 'system') {
         bodyElement.classList.add('bg-white', 'dark:bg-gray-800', 'text-black', 'dark:text-white');
         bodyElement.classList.remove('bg-black', 'text-white');
-    }
-    else if (mode === 'light') {
-        bodyElement.classList.add('bg-white','text-black');
-        bodyElement.classList.remove('bg-black', 'dark:bg-gray-800', 'text-white', 'dark:text-white');
-    }
-    else { //dark theme
+
+        tabs.forEach(tab => {
+            tab.classList.add('bg-white', 'dark:bg-gray-800', 'hover:bg-gray-200', 'dark:hover:bg-black');
+            tab.classList.remove('bg-gray-800', 'hover:bg-black');
+        });
+    } else if (mode === 'light') {
+        bodyElement.classList.add('bg-white', 'text-black');
+        bodyElement.classList.remove('bg-black', 'text-white', 'dark:bg-gray-800', 'dark:text-white');
+
+        tabs.forEach(tab => {
+            tab.classList.add('bg-white', 'hover:bg-gray-200');
+            tab.classList.remove('bg-gray-800', 'hover:bg-black', 'dark:bg-gray-800', 'dark:hover:bg-black');
+        });
+    } else {
         bodyElement.classList.add('bg-gray-800', 'text-white');
-        bodyElement.classList.remove('bg-white', 'dark:bg-gray-800', 'text-black', 'dark:text-white');
+        bodyElement.classList.remove('bg-white', 'text-black', 'dark:bg-gray-800', 'dark:text-white');
+
+        tabs.forEach(tab => {
+            tab.classList.add('bg-gray-800', 'hover:bg-black');
+            tab.classList.remove('bg-white', 'hover:bg-gray-200', 'dark:bg-gray-800', 'dark:hover:bg-black');
+        });
     }
-    console.log(mode);
-})
+
+    console.log("Theme mode is:", mode);
+});
+
 
 //gen selected
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         tabs.forEach(t => {
-            t.classList.remove('border-b-2', 'border-blue-500', 'font-bold', 'bg-white');
+            t.classList.remove('border-b-2', 'border-blue-500', 'font-bold' );
         });
-        tab.classList.add('border-b-2', 'border-blue-500', 'font-bold', 'bg-white');
+        tab.classList.add('border-b-2', 'border-blue-500', 'font-bold');
 
         const genId = Number(tab.getAttribute('data-gen'));
         currentGen = generations.find(g => g.id === genId);
@@ -187,16 +203,25 @@ document.addEventListener('click', (e) => {
     const pokemon = JSON.parse(dialog.dataset.pokemon);
 
     if (selectedData === 'baseStat') {
-        dialogInfo.innerHTML = `
-      <h1>HP - ${pokemon.stats.hp}</h1>
-      <h1>Attack - ${pokemon.stats.attack}</h1>
-      <h1>Defense - ${pokemon.stats.defense}</h1>
-      <h1>Sp.Atk - ${pokemon.stats.spAtk}</h1>
-      <h1>Sp.Def - ${pokemon.stats.spDef}</h1>
-      <h1>Speed - ${pokemon.stats.speed}</h1>
-      <h1>Total - ${pokemon.totalStat}</h1>
+        dialogInfo.innerHTML = Object.entries(pokemon.stats).map(([key, value]) => {
+            const label = key.replace(/([A-Z])/g, ' $1').toUpperCase(); // spAtk → SP ATK
+            const percent = Math.round((value / 255) * 100);
+
+            return `
+      <div class="stat-row mb-2">
+        <span class="stat-label inline-block w-24 font-bold">${label}</span>
+        <div class="stat-bar-container bg-gray-300 w-full h-6 rounded-full overflow-hidden inline-block align-middle">
+          <div class="stat-bar bg-blue-500 text-white text-sm h-full flex items-center justify-end pr-2" style="width: ${percent}%;">
+            ${value}
+          </div>
+        </div>
+      </div>
     `;
-    } else {
+        }).join('') + `
+    <div class="stat-total font-bold mt-4">Total: ${pokemon.totalStat}</div>
+  `;
+    }
+    else {
         dialogInfo.innerHTML = `
       <h1>Species - ${pokemon.species}</h1>
       <h1>Height - ${pokemon.height}</h1>
@@ -303,12 +328,16 @@ const gen9 = generations.find(g => g.id === 9);
 //load at first web load
 document.addEventListener('DOMContentLoaded', () => {
     const defaultGen = generations.find(g => g.id === 1);
+    bodyElement.classList.add('bg-white', 'dark:bg-gray-800', 'text-black', 'dark:text-white');
     if (defaultGen) {
         const defaultTab = document.querySelector(`.tab-button[data-gen="1"]`);
+        tabs.forEach(tab => {
+            tab.classList.add('bg-white', 'dark:bg-gray-800', 'hover:bg-gray-200', 'dark:hover:bg-black');
+            tab.classList.remove('bg-gray-800', 'hover:bg-black');
+        });
         if (defaultTab) {
-            defaultTab.classList.add('border-b-2', 'border-blue-500', 'font-bold', 'bg-white');
+            defaultTab.classList.add('border-b-2', 'border-blue-500', 'font-bold');
         }
-
         currentPage = 0;
         renderCurrentPage();
     }
